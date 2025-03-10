@@ -10,4 +10,3 @@ This work is funded in part by the National Institute of Mental Health [grant nu
 
 Individual scripts include the following:
 
-The tool is under active development. If you have questions please open a github issue or email Amber.Fedynak@camh.ca or Peter.Zhukovsky@camh.ca.
