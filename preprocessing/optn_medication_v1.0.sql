@@ -153,11 +153,11 @@ WHERE
     (LOWER(type_in_rec_med1) = 'bupropion' OR LOWER(type_in_rec_med1) = 'aripiprazole')
     OR 
     (LOWER(type_in_rec_med2) = 'bupropion' OR LOWER(type_in_rec_med2) = 'aripiprazole')
-    AND redcap_event_name IN ('week_2_arm_8')
+    AND redcap_event_name IN ('week_2_arm_8', 'week_4_arm_8', 'week_6_arm_8', 'week_8_arm_8', 'week_10end_arm_8')
 GROUP BY 
     record_id
 HAVING 
-    -- Ensure at least one entry for week2, week4, week6, or week8
+    -- Ensure at least one entry for week2, week4, week6, week8, or week10
     SUM(CASE WHEN BINARY redcap_event_name = 'week_2_arm_8' THEN 1 ELSE 0 END) > 0
     OR 
     SUM(CASE WHEN BINARY redcap_event_name = 'week_4_arm_8' THEN 1 ELSE 0 END) > 0
