@@ -1,0 +1,63 @@
+---
+title: "README"
+author: "Amber Fedynak"
+date: "2025-03-23"
+output: html_document
+---
+
+# SQL Query for Data Processing
+
+## NIH Toolbox Data
+
+This SQL query is used to extract and process data from the `baard.opt_nihtb_s1_acute_20250205` table, specifically for two key events: the **Baseline Event** (`OPTBL`) and the **Week 10 Event** (`OPTS1End`). The query retrieves various measurements at both event time points and consolidates them into a single row per `record_id`.
+
+It also handles multiple rows for the same `record_id` and ensures that the most recent, non-duplicated data is retrieved. If there are multiple matching records for a particular event, it uses `GROUP_CONCAT()` to concatenate the values into a single string.
+
+## Purpose
+
+This query retrieves the following data:
+- **Baseline Event** (`OPTBL`): Data at the time of the baseline event.
+- **Week 10 Event** (`OPTS1End`): Data at the time of the Week 10 event.
+  
+For each event, the query retrieves the following fields:
+- `fcc`
+- `dccs`
+- `flanker`
+- `listSort`
+- `pattComp`
+- `psm`
+
+## Query Explanation
+
+### Step-by-Step Breakdown:
+
+1. **Selection of Relevant Data**:
+   The `SELECT` statement retrieves data from the table `baard.opt_nihtb_s1_acute_20250205`, focusing on two time events: `OPTBL` (baseline) and `OPTS1End` (Week 10).
+   
+2. **Case Statements**:
+   `CASE` expressions are used to filter and retrieve data corresponding to specific time events. The query handles the `baseline` and `week10` data separately to ensure each event’s results are in the correct columns.
+
+3. **Handling Duplicates with `GROUP_CONCAT()`**:
+   If multiple rows match the criteria for a given `record_id` and event, `GROUP_CONCAT()` concatenates the values for the respective event into a single string. This ensures that you do not lose any data for records with multiple entries.
+
+4. **Column Mapping**:
+   Each event (baseline and Week 10) is mapped to its respective columns. The values for the measurements are selected with `MAX()` to ensure only a single value is returned per `record_id` for each event type. If there are duplicates, `GROUP_CONCAT()` ensures that all values are kept.
+
+
+### Notes:
+
+- **Data Retrieval**: The `WHERE` clause restricts the query to only include rows where `time` is either `OPTBL` (baseline) or `OPTS1End` (Week 10).
+- **Handling Duplicates**: `GROUP_CONCAT()` ensures that any duplicate values are concatenated into a comma-separated list for each column. This is useful when there are multiple rows for the same `record_id` and event.
+- **Group By**: The `GROUP BY id` ensures that the data is aggregated at the `record_id` level, producing one row per `record_id`.
+- Other datasets such as MADRS, PHQ9, are similar in terms of query structure and output format
+
+### Example Output:
+
+| record_id | baseline_vdate | baseline_fcc | baseline_dccs | baseline_flanker | baseline_listSort | baseline_pattComp | baseline_psm | week10_vdate | week10_fcc | week10_dccs | week10_flanker | week10_listSort | week10_pattComp | week10_psm |
+|-----------|----------------|--------------|---------------|------------------|-------------------|------------------|--------------|--------------|------------|-------------|----------------|-----------------|-----------------|------------|
+| 1         | 2025-02-05     | 5.1          | 3.2           | 7.4              | 8.1               | 6.3              | 5.5          | 2025-05-15   | 5.4        | 3.0         | 7.3            | 8.2             | 6.2             | 5.7        |
+| 2         | 2025-02-06     | 5.0          | 3.3           | 7.5              | 8.0               | 6.4              | 5.6          | 2025-05-16   | 5.5        | 3.1         | 7.4            | 8.3             | 6.3             | 5.8        |
+
+## Changelog
+
+- **Version 1.0**: Initial query version to retrieve data for baseline and Week 10 events, with handling for duplicates using `GROUP_CONCAT()`.
