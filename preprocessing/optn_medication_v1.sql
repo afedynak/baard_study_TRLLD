@@ -2,21 +2,26 @@ USE baard;
 
 SET SQL_SAFE_UPDATES=0;
 
-UPDATE optn_decision_support_form_arm_7_8_20250315 
+-- Update adherence_3_med1 for Aripiprazole
+UPDATE optn_decision_support_form_arm_7_8_20250315
 SET adherence_3_med1 = "Aripiprazole"
-WHERE adherence_3_med1 = "89013";
+WHERE adherence_3_med1 IN ("352393", "1165950", "350663", "352307", "602963", "602964", "615172", "576524", "402131", "404602", "1998463", "672538", "378301", "1158262");
 
-UPDATE optn_decision_support_form_arm_7_8_20250315 
+-- Update adherence_3_med1 for Bupropion
+UPDATE optn_decision_support_form_arm_7_8_20250315
 SET adherence_3_med1 = "Bupropion"
-WHERE adherence_3_med1 = "42347";
+WHERE adherence_3_med1 IN ("42347", "491056", "993517", "993519", "993523", "993527", "993556", "993563", "1151365", "378233", "1151366", "42568", "1187947");
 
-UPDATE optn_decision_support_form_arm_7_8_20250315 
+-- Update adherence_3_med2 for Aripiprazole
+UPDATE optn_decision_support_form_arm_7_8_20250315
 SET adherence_3_med2 = "Aripiprazole"
-WHERE adherence_3_med2 = "89013";
+WHERE adherence_3_med2 IN ("352393", "1165950", "350663", "352307", "602963", "602964", "615172", "576524", "402131", "404602", "1998463", "672538", "378301", "1158262");
 
-UPDATE optn_decision_support_form_arm_7_8_20250315 
+-- Update adherence_3_med2 for Bupropion
+UPDATE optn_decision_support_form_arm_7_8_20250315
 SET adherence_3_med2 = "Bupropion"
-WHERE adherence_3_med2 = "42347";
+WHERE adherence_3_med2 IN ("42347", "491056", "993517", "993519", "993523", "993527", "993556", "993563", "1151365", "378233", "1151366", "42568", "1187947");
+
 
 # Medication
 
