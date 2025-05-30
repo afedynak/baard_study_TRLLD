@@ -1,4 +1,4 @@
-## Overview
+## BAARD Data Analysis Overview
 
 This repository includes code for analysis of multi-modal data types for the Biotype-assigned Augmentation Approach in Resistant Late-Life Depression (BAARD) tool. 
 
