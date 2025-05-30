@@ -1,4 +1,4 @@
-# Overview
+## Overview
 
 This repository includes code for analysis of multi-modal data types for the Biotype-assigned Augmentation Approach in Resistant Late-Life Depression (BAARD) tool. 
 
@@ -12,4 +12,21 @@ NIH Project: 1UG3MH137353-01<br>
 https://reporter.nih.gov/search/Ot-rVrV750CHAHTHP7az_A/project-details/10954667
 
 This pipeline is under active development, for questions please contact Amber at Amber.Fedynak@camh.ca
+
+## Dashboard Code Repository
+
+An interactive dashboard used to support decision making in the development and evaluation of the BAARD tool.
+
+🔗 https://github.com/afedynak/baard_dashboard
+
+## Data Modelling Code Repository
+This repository contains scripts for implementing modelling approaches for the BAARD project.
+
+🔗 https://github.com/afedynak/baard_modelling
+
+## Data Analysis Code Repository
+
+All scripts and code utilized in the processing, harmonization, and analysis of multi-modal datasets for the BAARD project.
+
+🔗 https://github.com/afedynak/baard_study_TRLLD
 
