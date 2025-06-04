@@ -67,7 +67,7 @@ WHERE
     b.redcap_event_name = 'week_10end_arm_8')
 UNION
 (SELECT 
-    b.record_id,
+    UPPER(b.record_id),
 
     -- Include baseline data if it exists
     GROUP_CONCAT(
